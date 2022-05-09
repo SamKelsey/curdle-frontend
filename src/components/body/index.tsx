@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./styles.scss";
 
 import Board from "../board";
-import Keyboard from "../keyboard";
 
 import { useBoard } from "../../hooks/useBoard";
 
@@ -29,7 +28,6 @@ const Body = () => {
           Submit Guess
         </button>
       )}
-      <Keyboard board={board} />
     </div>
   );
 };

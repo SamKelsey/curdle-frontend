@@ -4,6 +4,8 @@ import { initialState, reducer } from "../reducers/board.reducer";
 import { fetchPlayerData, postGuess } from "../services/wordApi";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "../reducers/board.actions";
 
+import { IGuess } from "../types/board";
+
 export const useBoard = () => {
   const WORD_LENGTH: number = 5;
   const [board, boardDispatch] = useReducer(reducer, initialState);
@@ -33,13 +35,13 @@ export const useBoard = () => {
   };
 
   const submitGuess = async () => {
-    const guess = board.guesses[board.currentGuess].value;
+    const guess = board.guesses[board.currentGuess];
 
     if (!validSubmission(guess)) {
       return;
     }
 
-    const res = await postGuess(guess.join(""));
+    const res = await postGuess(JSON.stringify(guess));
     boardDispatch({ type: UPDATE_BOARD, payload: res });
   };
 
@@ -47,10 +49,9 @@ export const useBoard = () => {
     return guess.length <= WORD_LENGTH && !guess.includes(" ");
   };
 
-  const validSubmission = (guess: string[]) => {
-    return (
-      guess.length == WORD_LENGTH && !guess.includes(" ") && !guess.includes("")
-    );
+  const validSubmission = (guess: IGuess) => {
+    // TODO: Check rgb all valid values.
+    return true;
   };
 
   return {
