@@ -7,11 +7,7 @@ interface IWordApi {
   guessIsCorrect: boolean;
   guesses: IGuess[];
   lives: number;
-  discoveredLetters: {
-    correct: string[];
-    incorrect: string[];
-    exists: string[];
-  };
+  bestGuess: IGuess;
 }
 
 export const fetchPlayerData = async (): Promise<IWordApi> => {
@@ -43,11 +39,18 @@ const toInterface = (obj: any): IWordApi => {
     gameStatus: obj["game-status"],
     guessIsCorrect: obj["guess-is-correct"],
     lives: obj["lives"],
-    guesses: obj["guesses"].map((guess: any) => ({
-      value: guess["guess"].split(""),
-      correct: guess["correct"],
-      exists: guess["exists"],
-    })),
-    discoveredLetters: obj["discovered-letters"],
+    guesses: obj["guesses"].length
+      ? obj["guesses"].map((guess: any) => toGuess(guess))
+      : [],
+    bestGuess: obj["best-guess"] ? toGuess(obj["best-guess"]) : null,
+  };
+};
+
+const toGuess = (obj: any): IGuess => {
+  return {
+    red: obj["red"],
+    green: obj["green"],
+    blue: obj["blue"],
+    accuracy: obj["accuracy"],
   };
 };

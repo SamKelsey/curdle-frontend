@@ -1,9 +1,5 @@
-import { IBoard, IGuess } from "../types/board";
-import {
-  UPDATE_CURRENT_GUESS,
-  UPDATE_BOARD,
-  SUBMIT_GUESS,
-} from "./board.actions";
+import { IBoard } from "../types/board";
+import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "./board.actions";
 
 interface IAction {
   type: string;
@@ -11,40 +7,21 @@ interface IAction {
 }
 
 export const initialState: IBoard = {
-  guesses: [
-    { value: ["", "", "", "", ""], correct: [], exists: [] },
-    { value: ["", "", "", "", ""], correct: [], exists: [] },
-    { value: ["", "", "", "", ""], correct: [], exists: [] },
-    { value: ["", "", "", "", ""], correct: [], exists: [] },
-    { value: ["", "", "", "", ""], correct: [], exists: [] },
-  ],
+  guesses: [],
   currentGuess: 0,
   gameStatus: "PLAYING",
-  discoveredLetters: {
-    correct: [],
-    incorrect: [],
-    exists: [],
-  },
+  bestGuess: null,
 };
 
 export function reducer(state: IBoard, action: IAction): IBoard {
   switch (action.type) {
     case UPDATE_BOARD:
-      const newGuesses = action.payload.guesses;
-      for (let i = newGuesses.length; i < 5; i++) {
-        newGuesses.push({
-          value: ["", "", "", "", ""],
-          correct: [],
-          exists: [],
-        });
-      }
-
       return {
         ...state,
         gameStatus: action.payload.gameStatus,
         currentGuess: 5 - action.payload.lives,
-        guesses: newGuesses,
-        discoveredLetters: action.payload.discoveredLetters,
+        guesses: action.payload.guesses,
+        bestGuess: action.payload.bestGuess,
       };
     case UPDATE_CURRENT_GUESS:
       return {

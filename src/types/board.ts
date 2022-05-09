@@ -1,16 +1,13 @@
 export interface IGuess {
-  value: string[];
-  correct: number[];
-  exists: number[];
+  red: number;
+  green: number;
+  blue: number;
+  accuracy: number;
 }
 
 export interface IBoard {
   guesses: IGuess[];
   currentGuess: number;
   gameStatus: string;
-  discoveredLetters: {
-    incorrect: string[];
-    correct: string[];
-    exists: string[];
-  };
+  bestGuess: IGuess;
 }
