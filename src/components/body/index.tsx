@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./styles.scss";
 
-import Board from "../board";
+import ColourSample from "../colourSample";
 
 import { useBoard } from "../../hooks/useBoard";
 
@@ -18,11 +18,7 @@ const Body = () => {
 
   return (
     <div className="body">
-      <Board
-        board={board}
-        updateGuess={updateGuess}
-        submitGuess={submitGuess}
-      />
+      <ColourSample red={1} green={200} blue={3} />
       {board.gameStatus == "PLAYING" && (
         <button type="submit" onClick={() => submitGuess()}>
           Submit Guess
