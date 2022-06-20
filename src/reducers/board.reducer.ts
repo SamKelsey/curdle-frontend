@@ -6,6 +6,10 @@ interface IAction {
   payload: any;
 }
 
+/* 
+  TODO: Decide on initial state of board and what each row's state should contain.
+    - Maybe create a type for Row that contains 3 guesses, 2 inputs and a result.
+*/
 export const initialState: IBoard = {
   guesses: [],
   currentGuess: 0,

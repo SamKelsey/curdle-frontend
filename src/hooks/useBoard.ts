@@ -13,6 +13,7 @@ export const useBoard = () => {
   useEffect(() => {
     const initialiseBoard = async () => {
       const res = await fetchPlayerData();
+      console.log(res);
       boardDispatch({ type: UPDATE_BOARD, payload: res });
     };
 
@@ -49,8 +50,8 @@ export const useBoard = () => {
     return guess.length <= WORD_LENGTH && !guess.includes(" ");
   };
 
+  // TODO: Check rgb vals are within 0 -> 255 range.
   const validSubmission = (guess: IGuess) => {
-    // TODO: Check rgb all valid values.
     return true;
   };
 

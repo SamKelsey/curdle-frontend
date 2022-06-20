@@ -1,8 +1,14 @@
-export interface IGuess {
+interface IColor {
   red: number;
   green: number;
   blue: number;
-  accuracy: number;
+}
+
+export interface IGuess {
+  colour1: IColor;
+  colour2: IColor;
+  resultColour?: IColor;
+  accuracy?: number;
 }
 
 export interface IBoard {

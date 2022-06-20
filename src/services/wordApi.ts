@@ -48,9 +48,17 @@ const toInterface = (obj: any): IWordApi => {
 
 const toGuess = (obj: any): IGuess => {
   return {
-    red: obj["red"],
-    green: obj["green"],
-    blue: obj["blue"],
+    colour1: {
+      red: obj["colour-1"]["red"],
+      green: obj["colour-1"]["green"],
+      blue: obj["colour-1"]["blue"],
+    },
+    colour2: {
+      red: obj["colour-2"]["red"],
+      green: obj["colour-2"]["green"],
+      blue: obj["colour-2"]["blue"],
+    },
+    resultColour: obj["guess"],
     accuracy: obj["accuracy"],
   };
 };

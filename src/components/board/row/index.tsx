@@ -11,7 +11,12 @@ interface IProps {
 }
 
 const Row = ({ guess, updateGuess, submitGuess, isActive }: IProps) => {
-  return <div className="row">Row</div>;
+  return (
+    <div className="row">
+      <input type="color" />
+      <input type="color" />
+    </div>
+  );
 };
 
 export default Row;
