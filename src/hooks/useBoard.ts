@@ -4,10 +4,9 @@ import { initialState, reducer } from "../reducers/board.reducer";
 import { fetchPlayerData, postGuess } from "../services/wordApi";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "../reducers/board.actions";
 
-import { IGuess } from "../types/board";
+import { IColor, IGuess, IGuessUpdate } from "../types/board";
 
 export const useBoard = () => {
-  const WORD_LENGTH: number = 5;
   const [board, boardDispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -20,13 +19,9 @@ export const useBoard = () => {
     initialiseBoard();
   }, []);
 
-  const updateGuess = (newGuess: string[]) => {
+  const updateGuess = (newGuess: IGuessUpdate) => {
     if (!validUpdate(newGuess)) {
       return;
-    }
-
-    for (let i = newGuess.length; i < WORD_LENGTH; i++) {
-      newGuess.push("");
     }
 
     boardDispatch({
@@ -46,8 +41,9 @@ export const useBoard = () => {
     boardDispatch({ type: UPDATE_BOARD, payload: res });
   };
 
-  const validUpdate = (guess: string[]) => {
-    return guess.length <= WORD_LENGTH && !guess.includes(" ");
+  // TODO: Check valid colour
+  const validUpdate = (guess: IGuessUpdate) => {
+    return true;
   };
 
   // TODO: Check rgb vals are within 0 -> 255 range.

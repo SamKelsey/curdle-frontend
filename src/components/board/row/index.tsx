@@ -1,20 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.scss";
 
-import { IGuess } from "../../../types/board";
+import { hexToColour } from "../../../services/utils";
+import ColourSample from "../../colourSample";
+
+import { IGuess, IGuessUpdate } from "../../../types/board";
 
 interface IProps {
   guess: IGuess;
-  updateGuess: (newGuess: string[]) => void;
+  updateGuess: (newGuess: IGuessUpdate) => void;
   submitGuess: () => void;
   isActive: boolean;
 }
 
+const DEFAULT_COLOUR_SAMPLE = <ColourSample red={0} green={0} blue={0} />;
+
 const Row = ({ guess, updateGuess, submitGuess, isActive }: IProps) => {
   return (
     <div className="row">
-      <input type="color" />
-      <input type="color" />
+      <input
+        type="color"
+        onChange={(e) => updateGuess({ colour1: hexToColour(e.target.value) })}
+      />
+      <input
+        type="color"
+        onChange={(e) => updateGuess({ colour2: hexToColour(e.target.value) })}
+      />
+      <h3>=</h3>
+      {guess.resultColour ? (
+        <ColourSample
+          red={guess.resultColour.red}
+          green={guess.resultColour.green}
+          blue={guess.resultColour.blue}
+        />
+      ) : (
+        DEFAULT_COLOUR_SAMPLE
+      )}
     </div>
   );
 };

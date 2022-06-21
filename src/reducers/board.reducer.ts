@@ -28,6 +28,7 @@ export function reducer(state: IBoard, action: IAction): IBoard {
         bestGuess: action.payload.bestGuess,
       };
     case UPDATE_CURRENT_GUESS:
+      // TODO: Not updating board state when a guess is updated.
       return {
         ...state,
         guesses: state.guesses.map((guess, i) =>

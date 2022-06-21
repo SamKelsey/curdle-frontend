@@ -3,11 +3,11 @@ import "./styles.scss";
 
 import Row from "./row";
 
-import { IBoard, IGuess } from "../../types/board";
+import { IBoard, IGuess, IGuessUpdate } from "../../types/board";
 
 interface IProps {
   board: IBoard;
-  updateGuess: (s: string[]) => void;
+  updateGuess: (s: IGuessUpdate) => void;
   submitGuess: () => void;
 }
 

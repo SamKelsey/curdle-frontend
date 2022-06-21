@@ -17,6 +17,7 @@ const Body = () => {
     }
   }, [board.gameStatus]);
 
+  console.log(board.guesses);
   return (
     <div className="body">
       <h3>Target colour</h3>

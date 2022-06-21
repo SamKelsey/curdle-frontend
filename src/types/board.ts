@@ -1,7 +1,12 @@
-interface IColor {
+export interface IColor {
   red: number;
   green: number;
   blue: number;
+}
+
+export interface IGuessUpdate {
+  colour1?: IColor;
+  colour2?: IColor;
 }
 
 export interface IGuess {
