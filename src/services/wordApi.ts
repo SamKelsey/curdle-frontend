@@ -21,12 +21,15 @@ export const fetchPlayerData = async (): Promise<IWordApi> => {
   }
 };
 
-export const postGuess = async (guess: string): Promise<IWordApi> => {
-  console.log(`Submitting guess: ${guess}`);
+export const postGuess = async (guess: IGuess): Promise<IWordApi> => {
+  const jsonGuess = toJson(guess);
+  console.log(`Submitting guess: ${jsonGuess}`);
 
   try {
-    const res = await axios.post("/api/submitGuess", {
-      guess,
+    const res = await axios.post("/api/submitGuess", jsonGuess, {
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     return toInterface(res.data);
   } catch (e) {
@@ -44,6 +47,13 @@ const toInterface = (obj: any): IWordApi => {
       : [],
     bestGuess: obj["best-guess"] ? toGuess(obj["best-guess"]) : null,
   };
+};
+
+const toJson = (guess: IGuess): string => {
+  return JSON.stringify({
+    "colour-1": { ...guess.colour1 },
+    "colour-2": { ...guess.colour2 },
+  });
 };
 
 const toGuess = (obj: any): IGuess => {

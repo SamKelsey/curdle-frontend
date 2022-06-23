@@ -4,7 +4,7 @@ import { initialState, reducer } from "../reducers/board.reducer";
 import { fetchPlayerData, postGuess } from "../services/wordApi";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "../reducers/board.actions";
 
-import { IColor, IGuess, IGuessUpdate } from "../types/board";
+import { IGuess, IGuessUpdate } from "../types/board";
 
 export const useBoard = () => {
   const [board, boardDispatch] = useReducer(reducer, initialState);
@@ -38,7 +38,7 @@ export const useBoard = () => {
       return;
     }
 
-    const res = await postGuess(JSON.stringify(guess));
+    const res = await postGuess(guess);
     boardDispatch({ type: UPDATE_BOARD, payload: res });
   };
 
