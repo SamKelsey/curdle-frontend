@@ -26,8 +26,9 @@ export const useBoard = () => {
 
     boardDispatch({
       type: UPDATE_CURRENT_GUESS,
-      payload: { value: newGuess },
+      payload: newGuess,
     });
+    console.log(board.guesses);
   };
 
   const submitGuess = async () => {

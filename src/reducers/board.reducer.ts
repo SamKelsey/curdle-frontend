@@ -1,15 +1,13 @@
 import { IBoard } from "../types/board";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "./board.actions";
 
+import { IGuess } from "../types/board";
+
 interface IAction {
   type: string;
   payload: any;
 }
 
-/* 
-  TODO: Decide on initial state of board and what each row's state should contain.
-    - Maybe create a type for Row that contains 3 guesses, 2 inputs and a result.
-*/
 export const initialState: IBoard = {
   guesses: [],
   currentGuess: 0,
@@ -28,12 +26,15 @@ export function reducer(state: IBoard, action: IAction): IBoard {
         bestGuess: action.payload.bestGuess,
       };
     case UPDATE_CURRENT_GUESS:
-      // TODO: Not updating board state when a guess is updated.
+      const newGuess: IGuess = {
+        ...state.guesses[state.currentGuess],
+        ...action.payload,
+      };
+      state.guesses[state.currentGuess] = newGuess;
+
       return {
         ...state,
-        guesses: state.guesses.map((guess, i) =>
-          i === state.currentGuess ? { ...guess, ...action.payload } : guess
-        ),
+        guesses: state.guesses,
       };
     default:
       throw new Error(`${action.type} action type does not exist.`);

@@ -13,7 +13,7 @@ interface IProps {
   isActive: boolean;
 }
 
-const DEFAULT_COLOUR_SAMPLE = <ColourSample red={0} green={0} blue={0} />;
+const DEFAULT_COLOUR_SAMPLE = <ColourSample red={255} green={255} blue={255} />;
 
 const Row = ({ guess, updateGuess, submitGuess, isActive }: IProps) => {
   return (
