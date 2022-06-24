@@ -34,25 +34,15 @@ const Board = ({
     <div className="board">
       {Array(TOTAL_GUESSES)
         .fill(0)
-        .map((_, i) =>
-          guesses.length > i ? (
-            <Row
-              key={i}
-              guess={guesses[i]}
-              updateGuess={updateGuess}
-              submitGuess={submitGuess}
-              isActive={currentGuess == i}
-            />
-          ) : (
-            <Row
-              key={i}
-              guess={DEFAULT_GUESS}
-              updateGuess={updateGuess}
-              submitGuess={submitGuess}
-              isActive={currentGuess == i}
-            />
-          )
-        )}
+        .map((_, i) => (
+          <Row
+            key={i}
+            guess={guesses.length > i ? guesses[i] : DEFAULT_GUESS}
+            updateGuess={updateGuess}
+            submitGuess={submitGuess}
+            isActive={currentGuess == i}
+          />
+        ))}
     </div>
   );
 };
