@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.scss";
 
-import { hexToColour } from "../../../services/utils";
+import { hexToColour, colourToHex } from "../../../services/utils";
 import ColourSample from "../../colourSample";
 
 import { IGuess, IGuessUpdate } from "../../../types/board";
@@ -20,10 +20,12 @@ const Row = ({ guess, updateGuess, submitGuess, isActive }: IProps) => {
     <div className="row">
       <input
         type="color"
+        value={colourToHex(guess.colour1)}
         onChange={(e) => updateGuess({ colour1: hexToColour(e.target.value) })}
       />
       <input
         type="color"
+        value={colourToHex(guess.colour2)}
         onChange={(e) => updateGuess({ colour2: hexToColour(e.target.value) })}
       />
       <h3>=</h3>

@@ -10,3 +10,17 @@ export const hexToColour = (hex: string): IColor => {
       }
     : null;
 };
+
+export const colourToHex = (col: IColor): string => {
+  return (
+    "#" +
+    componentToHex(col.red) +
+    componentToHex(col.green) +
+    componentToHex(col.blue)
+  );
+};
+
+function componentToHex(col: number) {
+  var hex = col.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
