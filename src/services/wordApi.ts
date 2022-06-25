@@ -1,10 +1,11 @@
 import axios from "axios";
 
-import { IGuess } from "../types/board";
+import { IColor, IGuess } from "../types/board";
 
 interface IWordApi {
   gameStatus: string;
   guessIsCorrect: boolean;
+  targetColour: IColor;
   guesses: IGuess[];
   lives: number;
   bestGuess: IGuess;
@@ -41,6 +42,7 @@ const toInterface = (obj: any): IWordApi => {
   return {
     gameStatus: obj["game-status"],
     guessIsCorrect: obj["guess-is-correct"],
+    targetColour: obj["target-colour"],
     lives: obj["lives"],
     guesses: obj["guesses"].length
       ? obj["guesses"].map((guess: any) => toGuess(guess))

@@ -21,4 +21,5 @@ export interface IBoard {
   currentGuess: number;
   gameStatus: string;
   bestGuess: IGuess;
+  targetColour: IColor;
 }

@@ -2,7 +2,7 @@ import { IBoard } from "../types/board";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "./board.actions";
 
 import { IGuess } from "../types/board";
-import { DEFAULT_GUESS, TOTAL_GUESSES } from "../parameters";
+import { DEFAULT_GUESS, DEFAULT_COLOUR, TOTAL_GUESSES } from "../parameters";
 
 interface IAction {
   type: string;
@@ -14,6 +14,7 @@ export const initialState: IBoard = {
   currentGuess: 0,
   gameStatus: "PLAYING",
   bestGuess: null,
+  targetColour: DEFAULT_COLOUR,
 };
 
 export function reducer(state: IBoard, action: IAction): IBoard {
@@ -30,6 +31,7 @@ export function reducer(state: IBoard, action: IAction): IBoard {
         currentGuess: 5 - action.payload.lives,
         guesses: newGuesses,
         bestGuess: action.payload.bestGuess,
+        targetColour: action.payload.targetColour,
       };
     case UPDATE_CURRENT_GUESS:
       const newGuess: IGuess = {

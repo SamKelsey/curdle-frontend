@@ -1,6 +1,6 @@
 import { IGuess, IColor } from "./types/board";
 
-const DEFAULT_COLOUR: IColor = {
+export const DEFAULT_COLOUR: IColor = {
   red: 255,
   green: 255,
   blue: 255,
