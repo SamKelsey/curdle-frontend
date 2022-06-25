@@ -6,14 +6,17 @@ interface IProps {
   red: number;
   green: number;
   blue: number;
+  accuracy?: number;
 }
 
-const ColourSample = ({ red, green, blue }: IProps) => {
+const ColourSample = ({ red, green, blue, accuracy }: IProps) => {
   return (
     <div
       className="colour-sample"
       style={{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }}
-    ></div>
+    >
+      {accuracy ? `${accuracy}%` : null}
+    </div>
   );
 };
 

@@ -3,7 +3,7 @@ import "./styles.scss";
 
 import Row from "./row";
 
-import { IBoard, IGuess, IGuessUpdate } from "../../types/board";
+import { IBoard, IGuessUpdate } from "../../types/board";
 
 interface IProps {
   board: IBoard;
@@ -11,7 +11,6 @@ interface IProps {
   submitGuess: () => void;
 }
 
-// Causing issues because the passed colour isn't actually in the state.
 const Board = ({
   board: { guesses, currentGuess },
   updateGuess,

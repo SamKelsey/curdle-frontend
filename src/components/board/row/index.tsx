@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss";
 
 import { hexToColour, colourToHex } from "../../../services/utils";
 import ColourSample from "../../colourSample";
 
-import { IGuess, IGuessUpdate, IColor } from "../../../types/board";
+import { IGuess, IGuessUpdate } from "../../../types/board";
 
 interface IProps {
   guess: IGuess;
@@ -13,7 +13,7 @@ interface IProps {
   isActive: boolean;
 }
 
-const Row = ({ guess, updateGuess, submitGuess, isActive }: IProps) => {
+const Row = ({ guess, updateGuess, isActive }: IProps) => {
   return (
     <div className="row">
       <input
@@ -29,7 +29,7 @@ const Row = ({ guess, updateGuess, submitGuess, isActive }: IProps) => {
         onChange={(e) => updateGuess({ colour2: hexToColour(e.target.value) })}
       />
       <h3>=</h3>
-      <ColourSample {...guess.resultColour} />
+      <ColourSample {...guess.resultColour} accuracy={guess.accuracy} />
     </div>
   );
 };
