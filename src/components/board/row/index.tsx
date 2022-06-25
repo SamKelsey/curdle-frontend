@@ -13,37 +13,23 @@ interface IProps {
   isActive: boolean;
 }
 
-const DEFAULT_COLOUR: IColor = {
-  red: 255,
-  green: 255,
-  blue: 255,
-};
-
 const Row = ({ guess, updateGuess, submitGuess, isActive }: IProps) => {
   return (
     <div className="row">
       <input
         type="color"
         disabled={!isActive}
-        value={colourToHex(guess.colour1 ? guess.colour1 : DEFAULT_COLOUR)}
+        value={colourToHex(guess.colour1)}
         onChange={(e) => updateGuess({ colour1: hexToColour(e.target.value) })}
       />
       <input
         type="color"
         disabled={!isActive}
-        value={colourToHex(guess.colour2 ? guess.colour2 : DEFAULT_COLOUR)}
+        value={colourToHex(guess.colour2)}
         onChange={(e) => updateGuess({ colour2: hexToColour(e.target.value) })}
       />
       <h3>=</h3>
-      {guess.resultColour ? (
-        <ColourSample
-          red={guess.resultColour.red}
-          green={guess.resultColour.green}
-          blue={guess.resultColour.blue}
-        />
-      ) : (
-        <ColourSample {...DEFAULT_COLOUR} />
-      )}
+      <ColourSample {...guess.resultColour} />
     </div>
   );
 };

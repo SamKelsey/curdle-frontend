@@ -12,7 +12,6 @@ export const useBoard = () => {
   useEffect(() => {
     const initialiseBoard = async () => {
       const res = await fetchPlayerData();
-      console.log(res);
       boardDispatch({ type: UPDATE_BOARD, payload: res });
     };
 
@@ -28,7 +27,6 @@ export const useBoard = () => {
       type: UPDATE_CURRENT_GUESS,
       payload: newGuess,
     });
-    console.log(board.guesses);
   };
 
   const submitGuess = async () => {

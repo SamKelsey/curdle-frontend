@@ -2,6 +2,7 @@ import { IBoard } from "../types/board";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "./board.actions";
 
 import { IGuess } from "../types/board";
+import { DEFAULT_GUESS, TOTAL_GUESSES } from "../parameters";
 
 interface IAction {
   type: string;
@@ -9,7 +10,7 @@ interface IAction {
 }
 
 export const initialState: IBoard = {
-  guesses: [],
+  guesses: Array(TOTAL_GUESSES).fill(DEFAULT_GUESS),
   currentGuess: 0,
   gameStatus: "PLAYING",
   bestGuess: null,
@@ -18,11 +19,16 @@ export const initialState: IBoard = {
 export function reducer(state: IBoard, action: IAction): IBoard {
   switch (action.type) {
     case UPDATE_BOARD:
+      const newGuesses = action.payload.guesses;
+      for (let i = action.payload.guesses.length; i < TOTAL_GUESSES; i++) {
+        newGuesses.push(DEFAULT_GUESS);
+      }
+
       return {
         ...state,
         gameStatus: action.payload.gameStatus,
         currentGuess: 5 - action.payload.lives,
-        guesses: action.payload.guesses,
+        guesses: newGuesses,
         bestGuess: action.payload.bestGuess,
       };
     case UPDATE_CURRENT_GUESS:
