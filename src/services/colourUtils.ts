@@ -1,5 +1,9 @@
 import { IColor } from "../types/board";
 
+export const getColoursDistance = (c1: IColor, c2: IColor): number => {
+  return 100;
+};
+
 export const hexToColour = (hex: string): IColor => {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result

@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-import { hexToColour, colourToHex } from "../../../services/utils";
+import { hexToColour, colourToHex } from "../../../services/colourUtils";
 import ColourSample from "../../colourSample";
 
 import { IGuess, IGuessUpdate } from "../../../types/board";
