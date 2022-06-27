@@ -7,6 +7,7 @@ export interface IColor {
 export interface IGuessUpdate {
   colour1?: IColor;
   colour2?: IColor;
+  isValid?: boolean;
 }
 
 export interface IGuess {
@@ -14,6 +15,7 @@ export interface IGuess {
   colour2: IColor;
   resultColour?: IColor;
   accuracy?: number;
+  isValid?: boolean;
 }
 
 export interface IBoard {

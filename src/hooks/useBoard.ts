@@ -21,9 +21,13 @@ export const useBoard = () => {
   }, []);
 
   const updateGuess = (newGuess: IGuessUpdate) => {
-    if (!validUpdate(newGuess)) {
-      // Colours are too close.
-      // Consider renaming above method as it's misleading, it only checks colour distance, not other validity.
+    if (
+      coloursAreTooClose({
+        ...board.guesses[board.currentGuess],
+        ...newGuess,
+      })
+    ) {
+      newGuess.isValid = false;
     }
 
     boardDispatch({
@@ -43,17 +47,8 @@ export const useBoard = () => {
     boardDispatch({ type: UPDATE_BOARD, payload: res });
   };
 
-  // Checks the 2 colours in the guess are not too close.
-  const validUpdate = (guess: IGuessUpdate): boolean => {
-    const newGuess: IGuess = {
-      ...board.guesses[board.currentGuess],
-      ...guess,
-    };
-
-    return (
-      getColoursDistance(newGuess.colour1, newGuess.colour2) >
-      MIN_ALLOWABLE_COLOUR_DISTANCE
-    );
+  const coloursAreTooClose = (guess: IGuessUpdate): boolean => {
+    return getColoursDistance(guess) < MIN_ALLOWABLE_COLOUR_DISTANCE;
   };
 
   // Check rgb vals are within 0 -> 255 range.

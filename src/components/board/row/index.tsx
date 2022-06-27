@@ -14,6 +14,7 @@ interface IProps {
 }
 
 const Row = ({ guess, updateGuess, isActive }: IProps) => {
+  isActive ? console.log(guess.isValid) : "";
   return (
     <div className="row">
       <input

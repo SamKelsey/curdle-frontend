@@ -1,7 +1,7 @@
-import { IColor } from "../types/board";
+import { IColor, IGuessUpdate } from "../types/board";
 
-export const getColoursDistance = (c1: IColor, c2: IColor): number => {
-  return 100;
+export const getColoursDistance = (guess: IGuessUpdate): number => {
+  return 10;
 };
 
 export const hexToColour = (hex: string): IColor => {
