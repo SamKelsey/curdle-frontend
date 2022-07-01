@@ -1,7 +1,11 @@
 import { IColor, IGuessUpdate } from "../types/board";
 
 export const getColoursDistance = (guess: IGuessUpdate): number => {
-  return 10;
+  const r = guess.colour2.red - guess.colour1.red;
+  const g = guess.colour2.green - guess.colour1.green;
+  const b = guess.colour2.blue - guess.colour1.blue;
+
+  return Math.sqrt(Math.pow(r, 2) + Math.pow(g, 2) + Math.pow(b, 2));
 };
 
 export const hexToColour = (hex: string): IColor => {

@@ -14,9 +14,8 @@ interface IProps {
 }
 
 const Row = ({ guess, updateGuess, isActive }: IProps) => {
-  isActive ? console.log(guess.isValid) : "";
   return (
-    <div className="row">
+    <div className={`row ${guess.isValid == false ? "invalid" : ""}`}>
       <input
         type="color"
         disabled={!isActive}

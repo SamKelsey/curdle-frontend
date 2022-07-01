@@ -9,7 +9,7 @@ import { IGuess, IGuessUpdate } from "../types/board";
 
 export const useBoard = () => {
   const [board, boardDispatch] = useReducer(reducer, initialState);
-  const MIN_ALLOWABLE_COLOUR_DISTANCE = 30;
+  const MIN_ALLOWABLE_COLOUR_DISTANCE = 100;
 
   useEffect(() => {
     const initialiseBoard = async () => {
@@ -21,14 +21,10 @@ export const useBoard = () => {
   }, []);
 
   const updateGuess = (newGuess: IGuessUpdate) => {
-    if (
-      coloursAreTooClose({
-        ...board.guesses[board.currentGuess],
-        ...newGuess,
-      })
-    ) {
-      newGuess.isValid = false;
-    }
+    newGuess.isValid = !coloursAreTooClose({
+      ...board.guesses[board.currentGuess],
+      ...newGuess,
+    });
 
     boardDispatch({
       type: UPDATE_CURRENT_GUESS,
