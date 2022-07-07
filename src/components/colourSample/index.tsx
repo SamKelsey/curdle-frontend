@@ -7,12 +7,19 @@ interface IProps {
   green: number;
   blue: number;
   accuracy?: number;
+  customClasses?: string;
 }
 
-const ColourSample = ({ red, green, blue, accuracy }: IProps) => {
+const ColourSample = ({
+  red,
+  green,
+  blue,
+  accuracy,
+  customClasses,
+}: IProps) => {
   return (
     <div
-      className="colour-sample"
+      className={`colour-sample ${customClasses}`}
       style={{ backgroundColor: `rgb(${red}, ${green}, ${blue})` }}
     >
       {accuracy ? `${accuracy}%` : null}

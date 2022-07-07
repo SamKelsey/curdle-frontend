@@ -4,21 +4,33 @@
   display: flex;
   justify-content: space-between;
   border: 2px solid red;
-}
+  margin: 10px 0;
 
-.row input {
-  box-sizing: border-box;
-  outline: none;
-  width: 100%;
-  height: 100%;
-
-  &,
-  &:focus {
+  input {
+    box-sizing: border-box;
     outline: none;
-    border: none;
+    height: 100%;
+    width: 20%;
+
+    &,
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  h3 {
+    font-size: 3rem;
+    padding: 0;
+    margin: auto;
   }
 }
 
 .invalid {
   border: 2px solid green;
+}
+
+.guess-result {
+  height: 100%;
+  border: 2px solid yellow;
 }

@@ -20,7 +20,7 @@ const Body = () => {
   return (
     <div className="body">
       <h3>Target colour</h3>
-      <ColourSample {...board.targetColour} />
+      <ColourSample customClasses="target-colour" {...board.targetColour} />
       <Board
         board={board}
         submitGuess={submitGuess}

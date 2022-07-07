@@ -29,7 +29,11 @@ const Row = ({ guess, updateGuess, isActive }: IProps) => {
         onChange={(e) => updateGuess({ colour2: hexToColour(e.target.value) })}
       />
       <h3>=</h3>
-      <ColourSample {...guess.resultColour} accuracy={guess.accuracy} />
+      <ColourSample
+        {...guess.resultColour}
+        accuracy={guess.accuracy}
+        customClasses="guess-result"
+      />
     </div>
   );
 };
