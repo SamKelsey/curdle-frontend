@@ -3,6 +3,8 @@ import "./styles.scss";
 
 import Board from "../board";
 import ColourSample from "../colourSample";
+import GuessesDisplay from "../guessesDisplay";
+import GuessingArea from "../guessingArea";
 
 import { useBoard } from "../../hooks/useBoard";
 
@@ -21,15 +23,14 @@ const Body = () => {
     <div className="body">
       <h3>Target colour</h3>
       <ColourSample customClasses="target-colour" {...board.targetColour} />
-      <Board
+      {/* <Board
         board={board}
         submitGuess={submitGuess}
         updateGuess={updateGuess}
-      />
+      /> */}
+      <GuessesDisplay board={board} />
       {board.gameStatus == "PLAYING" && (
-        <button type="submit" onClick={() => submitGuess()}>
-          Submit Guess
-        </button>
+        <GuessingArea updateGuess={updateGuess} submitGuess={submitGuess} />
       )}
     </div>
   );
