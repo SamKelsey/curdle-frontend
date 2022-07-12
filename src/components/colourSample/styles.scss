@@ -1,9 +1,14 @@
 .colour-sample {
   width: 100px;
-  height: 100px;
   border-radius: 10px;
   border: 2px solid white;
   margin: none;
   color: black;
   box-sizing: border-box;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
 }

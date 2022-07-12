@@ -14,8 +14,10 @@
       background-color: rgb(83, 83, 83);
     }
   }
-}
 
-.target-colour {
-  margin: auto;
+  .target-colour {
+    margin: auto;
+    width: 70%;
+    max-width: 300px;
+  }
 }
