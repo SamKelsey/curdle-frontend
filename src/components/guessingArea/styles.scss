@@ -1,0 +1,81 @@
+.guessing-area {
+  .colour-inputs {
+    display: flex;
+    justify-content: space-around;
+    max-width: 500px;
+    margin: auto;
+
+    .colour-input {
+      position: relative;
+      width: 20%;
+      border-radius: 5px;
+      border: 1px solid white;
+      box-sizing: border-box;
+
+      input {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+
+        border: none;
+      }
+
+      input::-webkit-color-swatch {
+        border: none;
+      }
+
+      > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+
+    // input {
+    //   width: 20%;
+    //   border: none;
+    // }
+
+    // input::-webkit-color-swatch {
+    //   border: none;
+    // }
+
+    // input {
+    //   width: 20%;
+    //   height: 0;
+
+    //   &::after {
+    //     border: 1px solid yellow;
+    //     content: "";
+    //     display: block;
+    //     padding-bottom: 100%;
+    //   }
+    // }
+  }
+
+  button {
+    margin: auto;
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    border: 3px solid white;
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(83, 83, 83);
+    }
+  }
+}
