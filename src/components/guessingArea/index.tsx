@@ -1,29 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss";
 
-import { IGuessUpdate } from "../../types/board";
+import { IBoard, IGuessUpdate } from "../../types/board";
+
+import { hexToColour, colourToHex } from "../../services/colourUtils";
 
 interface IProps {
   updateGuess: (newGuess: IGuessUpdate) => void;
   submitGuess: () => void;
+  board: IBoard;
 }
 
-const GuessingArea = ({ updateGuess, submitGuess }: IProps) => {
-  const [col1, setCol1] = useState("#FFFFFF");
+const GuessingArea = ({ updateGuess, submitGuess, board }: IProps) => {
+  console.log(board);
   return (
     <div className="guessing-area">
       <div className="colour-inputs">
         <div className="colour-input">
           <input
             type="color"
-            value={col1}
-            onChange={(e) => setCol1(e.target.value)}
+            onChange={(e) =>
+              updateGuess({ colour1: hexToColour(e.target.value) })
+            }
           />
-          <div className="empty-div" style={{ backgroundColor: col1 }}></div>
+          <div
+            className="empty-div"
+            style={{
+              backgroundColor: colourToHex(
+                board.guesses[board.currentGuess].colour1
+              ),
+            }}
+          ></div>
         </div>
         <div className="colour-input">
-          <input type="color" value="#FFFFFF" />
-          <div></div>
+          <input
+            type="color"
+            onChange={(e) =>
+              updateGuess({ colour2: hexToColour(e.target.value) })
+            }
+          />
+          <div
+            className="empty-div"
+            style={{
+              backgroundColor: colourToHex(
+                board.guesses[board.currentGuess].colour2
+              ),
+            }}
+          ></div>
         </div>
       </div>
       <button type="submit" onClick={() => submitGuess()}>

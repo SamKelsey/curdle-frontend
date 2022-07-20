@@ -30,7 +30,11 @@ const Body = () => {
       /> */}
       <GuessesDisplay board={board} />
       {board.gameStatus == "PLAYING" && (
-        <GuessingArea updateGuess={updateGuess} submitGuess={submitGuess} />
+        <GuessingArea
+          updateGuess={updateGuess}
+          submitGuess={submitGuess}
+          board={board}
+        />
       )}
     </div>
   );
