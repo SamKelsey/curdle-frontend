@@ -3,7 +3,7 @@ import "./styles.scss";
 
 import { IBoard, IGuessUpdate } from "../../types/board";
 
-import { hexToColour, colourToHex } from "../../services/colourUtils";
+import ColourInput from "./colourInput";
 
 interface IProps {
   updateGuess: (newGuess: IGuessUpdate) => void;
@@ -15,38 +15,8 @@ const GuessingArea = ({ updateGuess, submitGuess, board }: IProps) => {
   return (
     <div className="guessing-area">
       <div className="colour-inputs">
-        <div className="colour-input">
-          <input
-            type="color"
-            onChange={(e) =>
-              updateGuess({ colour1: hexToColour(e.target.value) })
-            }
-          />
-          <div
-            className="empty-div"
-            style={{
-              backgroundColor: colourToHex(
-                board.guesses[board.currentGuess].colour1
-              ),
-            }}
-          ></div>
-        </div>
-        <div className="colour-input">
-          <input
-            type="color"
-            onChange={(e) =>
-              updateGuess({ colour2: hexToColour(e.target.value) })
-            }
-          />
-          <div
-            className="empty-div"
-            style={{
-              backgroundColor: colourToHex(
-                board.guesses[board.currentGuess].colour2
-              ),
-            }}
-          ></div>
-        </div>
+        <ColourInput inputNum={1} updateGuess={updateGuess} board={board} />
+        <ColourInput inputNum={2} updateGuess={updateGuess} board={board} />
       </div>
       <button type="submit" onClick={() => submitGuess()}>
         Submit Guess

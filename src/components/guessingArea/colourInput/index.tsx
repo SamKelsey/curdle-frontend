@@ -24,7 +24,7 @@ const ColourInput = ({ updateGuess, board, inputNum }: IProps) => {
         className="empty-div"
         style={{
           backgroundColor: colourToHex(
-            board.guesses[board.currentGuess].colour1
+            board.guesses[board.currentGuess][`colour${inputNum}`]
           ),
         }}
       ></div>
