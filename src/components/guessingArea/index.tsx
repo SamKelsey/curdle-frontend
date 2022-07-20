@@ -12,7 +12,6 @@ interface IProps {
 }
 
 const GuessingArea = ({ updateGuess, submitGuess, board }: IProps) => {
-  console.log(board);
   return (
     <div className="guessing-area">
       <div className="colour-inputs">
