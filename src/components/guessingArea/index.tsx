@@ -19,7 +19,7 @@ const GuessingArea = ({ updateGuess, submitGuess }: IProps) => {
             value={col1}
             onChange={(e) => setCol1(e.target.value)}
           />
-          <div style={{ backgroundColor: col1 }}></div>
+          <div className="empty-div" style={{ backgroundColor: col1 }}></div>
         </div>
         <div className="colour-input">
           <input type="color" value="#FFFFFF" />
