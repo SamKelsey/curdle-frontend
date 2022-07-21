@@ -1,9 +1,12 @@
 .guessing-area {
+  border: 2px solid red;
+  max-width: 500px;
+  margin: auto;
+
   .colour-inputs {
     display: flex;
-    justify-content: space-around;
-    max-width: 500px;
-    margin: auto;
+    justify-content: space-between;
+    margin: 40px 0;
   }
 
   button {
