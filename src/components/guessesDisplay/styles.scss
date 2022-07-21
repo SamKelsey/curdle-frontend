@@ -1,0 +1,20 @@
+.guess {
+  border: 2px solid white;
+
+  .guess-result {
+    width: 10vw;
+    height: 10vw;
+
+    box-sizing: border-box;
+  }
+
+  .guess-inputs {
+    display: flex;
+
+    .guess-input {
+      height: 5vw;
+      width: 5vw;
+      background-color: blue;
+    }
+  }
+}

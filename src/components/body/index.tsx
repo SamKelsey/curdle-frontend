@@ -23,11 +23,6 @@ const Body = () => {
     <div className="body">
       <h3>Target colour</h3>
       <ColourSample customClasses="target-colour" {...board.targetColour} />
-      {/* <Board
-        board={board}
-        submitGuess={submitGuess}
-        updateGuess={updateGuess}
-      /> */}
       <GuessesDisplay board={board} />
       {board.gameStatus == "PLAYING" && (
         <GuessingArea
