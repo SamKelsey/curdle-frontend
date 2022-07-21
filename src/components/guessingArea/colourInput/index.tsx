@@ -28,6 +28,7 @@ const ColourInput = ({ updateGuess, board, inputNum }: IProps) => {
           ),
         }}
       ></div>
+      <h4>Colour {inputNum}</h4>
     </div>
   );
 };

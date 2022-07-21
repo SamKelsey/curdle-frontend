@@ -1,7 +1,10 @@
 .colour-input {
   $BORDER_RAD: 5px;
 
-  width: 25%;
+  width: 25vw;
+  height: 25vw;
+  max-width: 100px;
+  max-height: 100px;
   position: relative;
 
   .empty-div {
@@ -21,12 +24,17 @@
     border-radius: $BORDER_RAD;
     width: 100%;
     height: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
-  &::after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-    position: relative;
-  }
+  // &::after {
+  //   border: 1px solid red;
+  //   content: "";
+  //   display: block;
+  //   padding-bottom: 100%;
+  //   position: relative;
+  // }
 }
