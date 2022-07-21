@@ -6,6 +6,7 @@
   max-width: 100px;
   max-height: 100px;
   position: relative;
+  margin-bottom: 30px;
 
   .empty-div {
     position: absolute;
@@ -29,12 +30,4 @@
       cursor: pointer;
     }
   }
-
-  // &::after {
-  //   border: 1px solid red;
-  //   content: "";
-  //   display: block;
-  //   padding-bottom: 100%;
-  //   position: relative;
-  // }
 }
