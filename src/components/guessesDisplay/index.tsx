@@ -12,29 +12,31 @@ const GuessesDisplay = ({ board }: IProps) => {
   return (
     <div className="guesses-display">
       <h4>Guesses</h4>
-      {board.guesses.map(
-        (guess, i) =>
-          guess.accuracy && (
-            <div className="guess" key={i}>
-              <div
-                className="guess-result"
-                style={{ backgroundColor: colourToHex(guess.resultColour) }}
-              >
-                {guess.accuracy}%
-              </div>
-              <div className="guess-inputs">
+      <div className="guesses">
+        {board.guesses.map(
+          (guess, i) =>
+            guess.accuracy && (
+              <div className="guess" key={i}>
                 <div
-                  className="guess-input"
-                  style={{ backgroundColor: colourToHex(guess.colour1) }}
-                ></div>
-                <div
-                  className="guess-input"
-                  style={{ backgroundColor: colourToHex(guess.colour2) }}
-                ></div>
+                  className="guess-result"
+                  style={{ backgroundColor: colourToHex(guess.resultColour) }}
+                >
+                  <p>{guess.accuracy}%</p>
+                </div>
+                <div className="guess-inputs">
+                  <div
+                    className="guess-input"
+                    style={{ backgroundColor: colourToHex(guess.colour1) }}
+                  ></div>
+                  <div
+                    className="guess-input"
+                    style={{ backgroundColor: colourToHex(guess.colour2) }}
+                  ></div>
+                </div>
               </div>
-            </div>
-          )
-      )}
+            )
+        )}
+      </div>
     </div>
   );
 };
