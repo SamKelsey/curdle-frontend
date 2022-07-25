@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./styles.scss";
 
 import Board from "../board";
+import Header from "../header";
 import ColourSample from "../colourSample";
 import GuessesDisplay from "../guessesDisplay";
 import GuessingArea from "../guessingArea";

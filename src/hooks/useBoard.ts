@@ -1,4 +1,5 @@
 import { useReducer, useEffect } from "react";
+import { Store } from "react-notifications-component";
 
 import { initialState, reducer } from "../reducers/board.reducer";
 import { fetchPlayerData, postGuess } from "../services/wordApi";
@@ -47,11 +48,21 @@ export const useBoard = () => {
     return getColoursDistance(guess) < MIN_ALLOWABLE_COLOUR_DISTANCE;
   };
 
-  // Check rgb vals are within 0 -> 255 range.
   const validSubmission = (guess: IGuess) => {
-    const nums: number[] = Object.values(guess);
+    if (!guess.isValid) {
+      Store.addNotification({
+        container: "top-full",
+        type: "danger",
+        title: "Invalid guess",
+        message:
+          "Your colours are too similar. Try picking colours that are more different.",
+        dismiss: { duration: 3000 },
+      });
 
-    return !(Math.max(...nums) > 255 || Math.min(...nums) < 0);
+      return false;
+    }
+
+    return true;
   };
 
   return {

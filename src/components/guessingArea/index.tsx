@@ -1,4 +1,5 @@
 import React from "react";
+import { Store } from "react-notifications-component";
 import "./styles.scss";
 
 import { IBoard, IGuessUpdate } from "../../types/board";

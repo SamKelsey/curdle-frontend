@@ -1,4 +1,6 @@
 import * as React from "react";
+import { ReactNotifications } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import "./styles.scss";
 
 // Components
@@ -7,10 +9,11 @@ import Body from "./body";
 
 const App = () => {
   return (
-    <React.Fragment>
+    <>
+      <ReactNotifications />
       <Header />
       <Body />
-    </React.Fragment>
+    </>
   );
 };
 

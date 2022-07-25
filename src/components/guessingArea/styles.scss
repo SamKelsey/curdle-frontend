@@ -13,8 +13,10 @@
     font-family: "Rubik", sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
-    border: 3px solid white;
+    border: 3px solid rgba(255, 255, 255, 0.9);
     border-radius: 5px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.9);
 
     &:hover {
       cursor: pointer;
