@@ -21,6 +21,7 @@
         max-height: 100px;
         max-width: $MAX_WIDTH;
         border-radius: $BORDER_RADIUS;
+        border: 1px solid grey;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -28,6 +29,9 @@
 
         p {
           background-color: transparent;
+          font-family: "Rubik", sans-serif;
+          font-size: 1rem;
+          font-weight: 800;
         }
       }
 
@@ -37,6 +41,7 @@
 
         .guess-input {
           border-radius: $BORDER_RADIUS;
+          border: 1px solid grey;
           height: 5vw;
           max-height: 50px;
           width: 100%;

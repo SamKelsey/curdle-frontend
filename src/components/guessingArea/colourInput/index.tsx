@@ -26,9 +26,9 @@ const ColourInput = ({ updateGuess, board, inputNum }: IProps) => {
           backgroundColor: colourToHex(
             board.guesses[board.currentGuess][`colour${inputNum}`]
           ),
-          border: board.guesses[board.currentGuess].isValid
-            ? "2px solid green"
-            : "2px solid red",
+          border: `4px solid ${
+            board.guesses[board.currentGuess].isValid ? "green" : "red"
+          }`,
         }}
       ></div>
       <h4>Colour {inputNum}</h4>

@@ -24,7 +24,6 @@ export const fetchPlayerData = async (): Promise<IWordApi> => {
 
 export const postGuess = async (guess: IGuess): Promise<IWordApi> => {
   const jsonGuess = toJson(guess);
-  console.log(`Submitting guess: ${jsonGuess}`);
 
   try {
     const res = await axios.post("/api/submitGuess", jsonGuess, {
