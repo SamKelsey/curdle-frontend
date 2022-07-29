@@ -1,3 +1,5 @@
+@import "../constants.scss";
+
 .body {
   text-align: center;
 
@@ -5,5 +7,34 @@
     margin: auto;
     width: 70%;
     max-width: 300px;
+  }
+}
+
+.game-instructions {
+  background-color: $GREY;
+  color: $WHITE;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid $WHITE;
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  button {
+    float: right;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 5px 40px;
+    background-color: #5fffa4;
+    border-radius: 4px;
+    border: 1px solid $GREY;
+    color: $WHITE;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

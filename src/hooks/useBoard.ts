@@ -6,11 +6,12 @@ import { fetchPlayerData, postGuess } from "../services/wordApi";
 import { getColoursDistance } from "../services/colourUtils";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "../reducers/board.actions";
 
-import { IGuess, IGuessUpdate } from "../types/board";
+import { IGuessUpdate } from "../types/board";
+
+const MIN_ALLOWABLE_COLOUR_DISTANCE = 100;
 
 export const useBoard = () => {
   const [board, boardDispatch] = useReducer(reducer, initialState);
-  const MIN_ALLOWABLE_COLOUR_DISTANCE = 100;
 
   useEffect(() => {
     const initialiseBoard = async () => {
@@ -36,19 +37,6 @@ export const useBoard = () => {
   const submitGuess = async () => {
     const guess = board.guesses[board.currentGuess];
 
-    if (!validSubmission(guess)) {
-      return;
-    }
-
-    const res = await postGuess(guess);
-    boardDispatch({ type: UPDATE_BOARD, payload: res });
-  };
-
-  const coloursAreTooClose = (guess: IGuessUpdate): boolean => {
-    return getColoursDistance(guess) < MIN_ALLOWABLE_COLOUR_DISTANCE;
-  };
-
-  const validSubmission = (guess: IGuess) => {
     if (!guess.isValid) {
       Store.addNotification({
         container: "top-full",
@@ -59,10 +47,15 @@ export const useBoard = () => {
         dismiss: { duration: 3000 },
       });
 
-      return false;
+      return;
     }
 
-    return true;
+    const res = await postGuess(guess);
+    boardDispatch({ type: UPDATE_BOARD, payload: res });
+  };
+
+  const coloursAreTooClose = (guess: IGuessUpdate): boolean => {
+    return getColoursDistance(guess) < MIN_ALLOWABLE_COLOUR_DISTANCE;
   };
 
   return {
