@@ -5,7 +5,7 @@ import { Modal } from "@mui/material";
 interface IProps {
   children: React.ReactNode;
   open: boolean;
-  classNames: string;
+  classNames?: string;
 }
 
 const CurdleModal = ({ children, classNames, open }: IProps) => {

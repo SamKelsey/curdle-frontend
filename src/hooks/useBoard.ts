@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import { Store } from "react-notifications-component";
 
 import { initialState, reducer } from "../reducers/board.reducer";
@@ -15,8 +15,10 @@ export const useBoard = () => {
 
   useEffect(() => {
     const initialiseBoard = async () => {
+      board.isLoading = true;
       const res = await fetchPlayerData();
       boardDispatch({ type: UPDATE_BOARD, payload: res });
+      board.isLoading = false;
     };
 
     initialiseBoard();

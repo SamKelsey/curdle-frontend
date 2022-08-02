@@ -21,7 +21,10 @@ export interface IGuess {
 export interface IBoard {
   guesses: IGuess[];
   currentGuess: number;
-  gameStatus: string;
+  gameStatus: GAME_STATUS;
   bestGuess: IGuess;
   targetColour: IColor;
+  isLoading: boolean;
 }
+
+export type GAME_STATUS = "PLAYING" | "LOST" | "WON";

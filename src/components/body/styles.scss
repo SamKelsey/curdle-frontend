@@ -13,8 +13,7 @@
 .game-instructions {
   background-color: $GREY;
   color: $WHITE;
-  padding: 10px 5px;
-  border-radius: 5px;
+  padding: 10px;
   border: 1px solid $WHITE;
 
   h3 {
@@ -25,7 +24,7 @@
 
   button {
     float: right;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 900;
     padding: 5px 40px;
     background-color: #5fffa4;

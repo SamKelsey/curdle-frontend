@@ -10,26 +10,22 @@ interface IAction {
 }
 
 export const initialState: IBoard = {
-  guesses: Array(TOTAL_GUESSES).fill(DEFAULT_GUESS),
+  guesses: [],
   currentGuess: 0,
   gameStatus: "PLAYING",
   bestGuess: null,
-  targetColour: DEFAULT_COLOUR,
+  targetColour: null,
+  isLoading: true,
 };
 
 export function reducer(state: IBoard, action: IAction): IBoard {
   switch (action.type) {
     case UPDATE_BOARD:
-      const newGuesses = action.payload.guesses;
-      for (let i = action.payload.guesses.length; i < TOTAL_GUESSES; i++) {
-        newGuesses.push(DEFAULT_GUESS);
-      }
-
       return {
         ...state,
         gameStatus: action.payload.gameStatus,
         currentGuess: 5 - action.payload.lives,
-        guesses: newGuesses,
+        guesses: action.payload.guesses,
         bestGuess: action.payload.bestGuess,
         targetColour: action.payload.targetColour,
       };

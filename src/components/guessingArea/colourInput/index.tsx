@@ -1,9 +1,10 @@
 import React from "react";
 import "./styles.scss";
 
-import { IBoard, IGuessUpdate } from "../../../types/board";
+import { IBoard, IGuessUpdate, IColor } from "../../../types/board";
 
 import { hexToColour, colourToHex } from "../../../services/colourUtils";
+import { DEFAULT_COLOUR } from "../../../parameters";
 
 interface IProps {
   updateGuess: (newGuess: IGuessUpdate) => void;
@@ -24,10 +25,17 @@ const ColourInput = ({ updateGuess, board, inputNum }: IProps) => {
         className="empty-div"
         style={{
           backgroundColor: colourToHex(
-            board.guesses[board.currentGuess][`colour${inputNum}`]
+            board.guesses[board.currentGuess] !== undefined
+              ? board.guesses[board.currentGuess][
+                  `colour${inputNum}` as keyof {
+                    colour1: IColor;
+                    colour2: IColor;
+                  }
+                ]
+              : DEFAULT_COLOUR
           ),
           border: `4px solid ${
-            board.guesses[board.currentGuess].isValid ? "green" : "red"
+            board.guesses[board.currentGuess]?.isValid ? "green" : "red"
           }`,
         }}
       ></div>
