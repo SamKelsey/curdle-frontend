@@ -20,6 +20,7 @@ export const hexToColour = (hex: string): IColor => {
 };
 
 export const colourToHex = (col: IColor): string => {
+  console.log(col);
   return (
     "#" +
     componentToHex(col.red) +

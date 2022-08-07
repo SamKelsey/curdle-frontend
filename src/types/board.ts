@@ -24,7 +24,6 @@ export interface IBoard {
   gameStatus: GAME_STATUS;
   bestGuess: IGuess;
   targetColour: IColor;
-  isLoading: boolean;
 }
 
 export type GAME_STATUS = "PLAYING" | "LOST" | "WON";

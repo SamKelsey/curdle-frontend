@@ -2,7 +2,6 @@ import { IBoard } from "../types/board";
 import { UPDATE_CURRENT_GUESS, UPDATE_BOARD } from "./board.actions";
 
 import { IGuess } from "../types/board";
-import { DEFAULT_GUESS, DEFAULT_COLOUR, TOTAL_GUESSES } from "../parameters";
 
 interface IAction {
   type: string;
@@ -15,7 +14,6 @@ export const initialState: IBoard = {
   gameStatus: "PLAYING",
   bestGuess: null,
   targetColour: null,
-  isLoading: true,
 };
 
 export function reducer(state: IBoard, action: IAction): IBoard {

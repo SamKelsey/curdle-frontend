@@ -9,7 +9,7 @@ import GuessingArea from "../guessingArea";
 import { useBoard } from "../../hooks/useBoard";
 
 const Body = () => {
-  const { board, submitGuess, updateGuess } = useBoard();
+  const { board, submitGuess, updateGuess, isLoading } = useBoard();
   const [instructionsActive, setInstructionsActive] = useState(false);
 
   const renderModal = () => {
@@ -37,13 +37,13 @@ const Body = () => {
 
   return (
     <div className="body">
-      {!board.isLoading && (
+      {!isLoading && (
         <>
           <h3>Target colour</h3>
           {gameInstructions()}
           <ColourSample customClasses="target-colour" {...board.targetColour} />
           <GuessesDisplay board={board} />
-          {board.gameStatus == "PLAYING" && (
+          {board.gameStatus === "PLAYING" && (
             <GuessingArea
               updateGuess={updateGuess}
               submitGuess={submitGuess}
