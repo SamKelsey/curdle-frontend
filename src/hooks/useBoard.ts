@@ -27,10 +27,12 @@ export const useBoard = () => {
   }, []);
 
   const updateGuess = (newGuess: IGuessUpdate) => {
-    newGuess.isValid = !coloursAreTooClose({
+    newGuess = {
       ...(board.guesses[board.currentGuess] || DEFAULT_GUESS),
       ...newGuess,
-    });
+    };
+
+    newGuess.isValid = !coloursAreTooClose(newGuess);
 
     boardDispatch({
       type: UPDATE_CURRENT_GUESS,
@@ -59,7 +61,6 @@ export const useBoard = () => {
   };
 
   const coloursAreTooClose = (guess: IGuessUpdate): boolean => {
-    console.log(guess);
     return getColoursDistance(guess) < MIN_ALLOWABLE_COLOUR_DISTANCE;
   };
 
