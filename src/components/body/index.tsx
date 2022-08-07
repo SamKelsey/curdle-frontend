@@ -12,11 +12,11 @@ const Body = () => {
   const { board, submitGuess, updateGuess, isLoading } = useBoard();
   const [instructionsActive, setInstructionsActive] = useState(false);
 
-  const renderModal = () => {
-    if (board.guesses !== undefined) {
+  useEffect(() => {
+    if (!isLoading && board.guesses.length === 0) {
       setInstructionsActive(true);
     }
-  };
+  }, [isLoading]);
 
   // TODO: Change to renderModals and use state to choose which modal is active.
   const gameInstructions = () => (
