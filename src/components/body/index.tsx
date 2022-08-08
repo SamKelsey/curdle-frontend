@@ -14,7 +14,6 @@ const Body = () => {
   const [instructionsActive, setInstructionsActive] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
 
-  // TODO: Gameover modal should pop up as soon as out of lives (not only after refresh).
   useEffect(() => {
     if (isLoading) {
       return;
@@ -25,9 +24,8 @@ const Body = () => {
     } else if (board.gameStatus === "WON" || board.gameStatus === "LOST") {
       setIsGameOver(true);
     }
-  }, [isLoading]);
+  }, [isLoading, board.gameStatus]);
 
-  // TODO: Change to renderModals and use state to choose which modal is active.
   const gameInstructions = () => (
     <CurdleModal classNames="game-instructions" open={instructionsActive}>
       <h3>How to play</h3>
