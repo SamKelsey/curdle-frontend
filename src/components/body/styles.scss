@@ -37,3 +37,44 @@
     }
   }
 }
+
+.game-over {
+  background-color: $GREY;
+  color: $WHITE;
+  padding: 10px;
+  border: 1px solid $WHITE;
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  h5 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+  }
+
+  .level-bar {
+    background-color: $LIGHT_GREY;
+    width: 80%;
+    height: 20px;
+    margin: 20px auto;
+    padding: 5px;
+
+    > div {
+      height: 100%;
+      background-color: red;
+      width: 80%;
+    }
+  }
+}
