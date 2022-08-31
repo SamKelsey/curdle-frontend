@@ -1,7 +1,7 @@
 name: Push Image to Registry
 
 on:
-  workflow_displatch:
+  workflow_dispatch:
     inputs:
       tag:
         description: "Tag for deployed image."
