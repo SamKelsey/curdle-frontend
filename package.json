@@ -24,6 +24,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-notifications-component": "^4.0.1",
+    "sass": "^1.54.7",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.1",
     "webpack-server": "^0.1.2"
@@ -35,7 +36,6 @@
     "css-loader": "^6.6.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
-    "node-sass": "^7.0.1",
     "sass-loader": "^12.6.0",
     "source-map-loader": "^3.0.1",
     "typescript": "^4.7.4",
