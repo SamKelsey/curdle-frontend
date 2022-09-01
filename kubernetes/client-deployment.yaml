@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: curdle-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: curdle-frontend
+  template:
+    metadata:
+      labels:
+        app: curdle-frontend
+    spec:
+      containers:
+        - name: nginx
+          image: samjkelsey1/curdle-frontend:latest
+          ports:
+            - containerPort: 80
