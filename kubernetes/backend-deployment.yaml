@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: curdle-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: curdle-backend
+  template:
+    metadata:
+      labels:
+        app: curdle-backend
+    spec:
+      containers:
+        - name: backend
+          image: samjkelsey1/curdle-backend:latest
+          ports:
+            - containerPort: 8080
