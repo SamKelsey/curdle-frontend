@@ -19,3 +19,6 @@ spec:
           image: samjkelsey1/curdle-backend:latest
           ports:
             - containerPort: 8080
+          env:
+            - name: spring.redis.host
+              value: "redis-cluster-ip-service"
