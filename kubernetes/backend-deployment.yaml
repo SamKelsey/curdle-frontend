@@ -5,7 +5,7 @@ metadata:
   labels:
     app: curdle-backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: curdle-backend
@@ -22,3 +22,5 @@ spec:
           env:
             - name: spring.redis.host
               value: "redis-cluster-ip-service"
+            - name: server.servlet.context-path
+              value: "/api"
